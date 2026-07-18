@@ -10,6 +10,23 @@ correct classification action, and the platform fills the **actual DAF Form
 2096 PDF** (20230331 template), routes it through human approvals, then
 flattens and archives it write-once.
 
+## Screenshots
+
+**The platform** — plain-English request → AFECD-grounded retrieval → the live,
+auto-populated official form → digital routing → hash-chained signature vault:
+
+![e2096 dashboard](docs/dashboard.png)
+
+**A finalized DAF Form 2096** — four PAdES digital signatures (member
+concurrence, supervisor, commander, FSS personnel official), every field
+populated from the member profile and the derived action:
+
+![Fully signed DAF Form 2096](docs/form_signed.png)
+
+**The pitch report** (`/report`) — live metrics from the actual records:
+
+![SBIR demonstration report](docs/report.png)
+
 ## Run
 
 ```

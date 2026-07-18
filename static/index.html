@@ -142,6 +142,8 @@ async function init(){
  const who=await api("/api/whoami");
  $("whoami").textContent=`${who.subject} — ${who.method}${who.authenticated?" ✔":""}`;
  refreshArchive();refreshQueue();refreshMetrics();
+ const qc=new URLSearchParams(location.search).get("case");
+ if(qc)loadCase(qc);
 }
 async function refreshMetrics(){
  const m=await api("/api/metrics");

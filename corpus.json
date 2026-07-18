@@ -1,0 +1,77 @@
+{
+  "_notice": "FICTIONALIZED sample corpus for demonstration only. Paraphrased/invented entries in AFECD/AFOCD style. Replace with the licensed authoritative AFECD/AFOCD dataset in production.",
+  "documents": [
+    {
+      "id": "afecd-1d7x1b-7lvl",
+      "source": "AFECD (sample) — AFSC 1D7X1B, Cyber Defense Operations, Craftsman",
+      "tags": ["upgrade", "skill level", "7-level", "craftsman", "1D7", "cyber", "ugt", "cdc"],
+      "text": "1D771B (Craftsman). Mandatory requirements: completion of 7-skill level upgrade training (UGT); award of the 5-skill level held a minimum of 12 months; minimum grade of SSgt; completion of the craftsman CDC set. Award documented via DAF Form 2096 with UTM verification."
+    },
+    {
+      "id": "dafi-2670-upgrade",
+      "source": "DAFMAN 36-2689 (sample) — Training Program",
+      "tags": ["upgrade", "2096", "utm", "documentation", "skill level"],
+      "text": "Skill-level upgrade actions are documented on DAF Form 2096, certified by the unit training manager and approved by the commander or authorized representative prior to update in MilPDS. Effective date is the date all requirements are verified complete."
+    },
+    {
+      "id": "afecd-sei-8b0",
+      "source": "AFECD Attachment (sample) — Special Experience Identifiers",
+      "tags": ["sei", "instructor", "identifier", "8b0", "award"],
+      "text": "SEI 8B0 (Instructor, sample code). Awarded upon completion of a formal instructor methodology course and a minimum of 6 months instructing in the awarded AFSC. Requested via DAF Form 2096 Section II (Designate SEI) with commander certification. Withdrawal only per MAJCOM guidance."
+    },
+    {
+      "id": "afecd-duty-title",
+      "source": "AFECD (sample) — Duty Title Standards",
+      "tags": ["duty", "title", "flight chief", "umd", "position"],
+      "text": "Duty titles must match an authorized position on the Unit Manning Document (UMD). 'Flight Chief' is authorized for craftsman-level NCOs supervising two or more elements. Duty title changes are documented in the Duty Information block of DAF Form 2096 with office symbol, position number, and effective date."
+    },
+    {
+      "id": "afecd-1d7x1z-entry",
+      "source": "AFECD (sample) — AFSC 1D7X1Z, Cyber Systems Operations",
+      "tags": ["retrain", "retraining", "1D7X1Z", "entry", "3-level"],
+      "text": "1D7X1Z entry requirements: ASVAB Electronics 70; Top Secret eligibility; completion of the initial skills course. Retrainees enter at the 3-skill level (1D731Z) pending completion of upgrade training in the new specialty."
+    },
+    {
+      "id": "afecd-retraining-rule",
+      "source": "AFECD (sample) — Retraining Procedures",
+      "tags": ["retrain", "retraining", "cafsc", "withdraw", "pafsc"],
+      "text": "Approved retraining actions require a simultaneous CAFSC change to the new control AFSC and withdrawal of the previously awarded primary AFSC. Date initially entered retraining is recorded in the OJT Information block of DAF Form 2096."
+    },
+    {
+      "id": "sdap-sample",
+      "source": "DAFI 36-3012 (sample) — Special Duty Assignment Pay",
+      "tags": ["sdap", "proficiency", "pay", "special duty", "rating"],
+      "text": "Members assigned to designated special duty positions receive SDAP at the rate tied to the SD rating of the position. Start, change, and stop actions are documented in the Assign Proficiency Pay block of DAF Form 2096 with SS rating, monthly amount, and effective date."
+    },
+    {
+      "id": "concurrence-rule",
+      "source": "DAFMAN 36-2689 (sample) — Member Concurrence",
+      "tags": ["concurrence", "member", "signature", "2096"],
+      "text": "Section III of DAF Form 2096 records member concurrence or non-concurrence with the classification action. Non-concurrence does not halt processing but is retained in the record."
+    },
+    {
+      "id": "css-routing",
+      "source": "myFSS Concept of Operations (sample)",
+      "tags": ["routing", "css", "fss", "milpds", "approval"],
+      "text": "Completed DAF Forms 2096 route from the requesting official through the commander or authorized representative to the servicing FSS for action by a personnel official, who records approval or disapproval and updates MilPDS. CSS/FSM coordination is recorded in Section VIII."
+    },
+    {
+      "id": "afecd-2a3x3-7lvl",
+      "source": "AFECD (sample) — AFSC 2A3X3, Tactical Aircraft Maintenance, Craftsman",
+      "tags": ["upgrade", "skill level", "7-level", "craftsman", "2A3", "maintenance", "aircraft"],
+      "text": "2A373 (Craftsman). Mandatory requirements: completion of 7-skill level upgrade training; 5-skill level held minimum 12 months; craftsman CDC set complete. Award documented via DAF Form 2096 with UTM verification."
+    },
+    {
+      "id": "afecd-4n0x1-7lvl",
+      "source": "AFECD (sample) — AFSC 4N0X1, Aerospace Medical Service, Craftsman",
+      "tags": ["upgrade", "skill level", "7-level", "craftsman", "4N0", "medical", "aerospace"],
+      "text": "4N071 (Craftsman). Mandatory requirements: completion of 7-skill level upgrade training; NREMT certification current; 5-skill level held minimum 12 months. Award documented via DAF Form 2096."
+    },
+    {
+      "id": "afocd-officer-note",
+      "source": "AFOCD (sample) — Officer Classification",
+      "tags": ["officer", "afocd", "aeronautical", "rating"],
+      "text": "Officer AFSC actions (award, upgrade to qualified level, aeronautical ratings) follow AFOCD specialty descriptions and are likewise documented on DAF Form 2096 where MilPDS self-service is unavailable."
+    }
+  ]
+}

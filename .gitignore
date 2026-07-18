@@ -1,0 +1,7 @@
+# runtime artifacts — regenerate on first run
+e2096.db
+archive/*.pdf
+pki/
+__pycache__/
+*.pyc
+.pytest_cache/

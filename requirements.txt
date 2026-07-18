@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+hypercorn
+python-multipart
+pypdf
+pypdfium2
+reportlab
+pillow
+pyhanko
+cryptography
+pytest

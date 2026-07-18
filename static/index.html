@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>e2096 — DAF Form 2096 Automation Platform (PROTOTYPE)</title>
+<style>
+:root{--navy:#1b2a4a;--blue:#2f5fb3;--gold:#c9a227;--bg:#f2f4f8;--ink:#1a1d24;--ok:#1e7d3c;--line:#d4dae4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.5 "Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+.banner{background:#b3542f;color:#fff;text-align:center;font-weight:700;padding:4px;font-size:12px;letter-spacing:.5px}
+header{background:var(--navy);color:#fff;padding:12px 24px;display:flex;align-items:center;gap:14px}
+header .seal{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px}
+header h1{font-size:18px}header .sub{font-size:12px;opacity:.8}
+.stats{display:flex;gap:24px;margin-left:auto;font-size:12px;text-align:right}
+.stats b{display:block;font-size:16px;color:var(--gold)}
+main{display:grid;grid-template-columns:400px 1fr;gap:16px;padding:16px 24px;max-width:1600px;margin:0 auto}
+.card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.card h2{background:#e9edf5;padding:8px 14px;font-size:12.5px;color:var(--navy);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--line)}
+.profile{padding:10px 14px;font-size:12.5px;display:grid;grid-template-columns:1fr 1fr;gap:3px 14px}
+.profile span{color:#667;font-size:11px}
+#chat{height:280px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:92%;padding:8px 12px;border-radius:10px;white-space:pre-wrap;font-size:13px}
+.msg.user{background:var(--blue);color:#fff;align-self:flex-end}
+.msg.bot{background:#eef1f7;align-self:flex-start}
+.inputrow{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
+.inputrow input{flex:1;padding:9px 12px;border:1px solid var(--line);border-radius:6px;font:inherit}
+button{background:var(--blue);color:#fff;border:0;border-radius:6px;padding:9px 14px;font:inherit;font-weight:600;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 10px 10px}
+.chips button{background:#fff;color:var(--blue);border:1px solid var(--blue);padding:5px 10px;font-size:12px;font-weight:500}
+#rag{padding:10px 14px;font-size:12px;max-height:230px;overflow-y:auto}
+.ragdoc{border-left:3px solid var(--gold);background:#fbf8ef;padding:7px 10px;margin-bottom:8px;border-radius:0 6px 6px 0}
+.ragdoc .src{color:#8a6d1f;font-size:11px;font-weight:700}
+.muted{color:#778;font-style:italic}
+#preview{padding:10px;text-align:center;background:#5a616e;min-height:400px}
+#preview img{max-width:100%;box-shadow:0 4px 18px rgba(0,0,0,.4);background:#fff}
+.pdfbar{display:flex;gap:10px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line);font-size:12.5px}
+.pdfbar a{color:var(--blue);font-weight:600}
+#route{display:flex;gap:10px;padding:14px;align-items:stretch}
+.step{flex:1;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;font-size:12.5px;background:#fafbfd}
+.step.pending{border-color:var(--gold);background:#fdf9ec}
+.step.approved{border-color:var(--ok);background:#eaf6ee}
+.step b{display:block;margin-bottom:2px}
+.step .st{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#778}
+.step.approved .st{color:var(--ok)}
+.step button{margin-top:8px;padding:5px 12px;font-size:12px}
+.arrow{align-self:center;color:#99a;font-size:18px}
+#archive table{width:100%;border-collapse:collapse;font-size:12px}
+#archive th,#archive td{border-bottom:1px solid var(--line);padding:6px 12px;text-align:left}
+#archive th{background:#e9edf5;color:var(--navy);font-size:11px;text-transform:uppercase}
+.lock{color:#778;font-size:11px;padding:6px 12px;display:block}
+.pill{display:inline-block;background:#eaf6ee;color:var(--ok);border-radius:10px;padding:1px 8px;font-size:11px;font-weight:700}
+.col{display:flex;flex-direction:column;gap:16px}
+footer{text-align:center;font-size:11px;color:#889;padding:14px}
+</style>
+</head>
+<body>
+<div class="banner">⚠ PROTOTYPE DEMONSTRATION — NOT AN OFFICIAL DoD SYSTEM — ALL DATA FICTIONAL — FOUO/PII PROHIBITED ⚠</div>
+<header>
+  <div class="seal">e2096</div>
+  <div><h1>e2096 — Classification &amp; Training Action Platform</h1>
+  <div class="sub">LLM (GenAI.mil) + AFECD/AFOCD RAG → real DAF Form 2096 → digital routing → immutable archive</div></div>
+  <div class="stats">
+    <div><b>~200,000</b>2096 actions / yr</div>
+    <div><b>2.5 hrs → 5 min</b>labor per action</div>
+    <div><b id="cycle">—</b>avg cycle time</div>
+    <div><b id="saved">0</b>man-hours saved (all records)</div>
+  </div>
+</header>
+<div id="cacbar" style="background:#12203c;color:#9fb3d9;font-size:11.5px;padding:4px 24px">🪪 Identity: <span id="whoami">…</span></div>
+<main>
+<div class="col">
+  <div class="card">
+    <h2>Member Profile — pulled from myFSS (simulated) <select id="memsel" onchange="renderProfile()" style="float:right;font:inherit;font-size:12px"></select></h2>
+    <div class="profile" id="profile"></div>
+  </div>
+  <div class="card">
+    <h2>Ask the Assistant</h2>
+    <div id="chat"><div class="msg bot">Hi — I can draft a real DAF Form 2096 for you. Tell me what happened in plain English and I'll pull the requirements from the AFECD corpus and pre-fill the actual form.</div></div>
+    <div class="chips">
+      <button onclick="ask('I just finished my 7-level upgrade training, get me my craftsman AFSC')">7-level upgrade</button>
+      <button onclick="ask('I completed the instructor course, I need my instructor SEI')">Award SEI</button>
+      <button onclick="ask('I moved to the flight chief position, update my duty title')">Duty title</button>
+      <button onclick="ask('I was selected to retrain into 1D7X1Z')">Retraining</button>
+      <button onclick="ask('start my SDAP special duty pay')">SDAP</button>
+    </div>
+    <div class="inputrow"><input id="q" placeholder="e.g. 'I finished my 7-level UGT last week...'" onkeydown="if(event.key==='Enter')ask()"><button onclick="ask()">Send</button></div>
+  </div>
+  <div class="card">
+    <h2>RAG Retrieval — AFECD/AFOCD corpus (sample, BM25)</h2>
+    <div id="rag"><span class="muted">Retrieved passages with scores will appear here…</span></div>
+  </div>
+  <div class="card">
+    <h2>Unit Action Queue — all cases, click to open</h2>
+    <div id="queuewrap"><table><thead><tr><th>Ctrl #</th><th>Action</th><th>Status</th><th>Awaiting</th></tr></thead><tbody id="queue"></tbody></table>
+    <span class="lock">Cases persist in the database — in-flight actions survive restarts; nothing gets lost in an inbox.</span></div>
+  </div>
+  <div class="card">
+    <h2>Read-Only Archive — write-once (SQLite triggers)</h2>
+    <div id="archive"><table><thead><tr><th>Ctrl #</th><th>Action</th><th>Finalized</th><th>PDF</th></tr></thead><tbody id="arch"></tbody></table><span class="lock">🔒 UPDATE/DELETE on this table RAISE(ABORT) at the database layer. Flattened raster PDFs — nothing editable.</span></div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card">
+    <div class="pdfbar"><h2 style="all:unset;font-weight:700;color:var(--navy);font-size:12.5px;text-transform:uppercase">Live DAF Form 2096 — actual PDF, auto-populated</h2>
+      <span style="margin-left:auto" id="ctrlno" class="muted"></span>
+      <a id="pdflink" href="#" target="_blank" style="display:none">Export signable PDF ↗</a>
+      <a id="packetlink" href="#" target="_blank" style="display:none">MilPDS data packet ↗</a>
+      <label id="ingestlbl" style="display:none;color:var(--blue);font-weight:600;cursor:pointer">Ingest signed PDF ⇪<input type="file" accept=".pdf" style="display:none" onchange="ingest(this)"></label>
+      <a href="/report" target="_blank">Pitch report ↗</a></div>
+    <div id="preview"><div class="muted" style="color:#cdd3dd;padding:40px">No form yet — ask the assistant.<br>The preview below is the <b>real DAF Form 2096 PDF</b>, filled field-by-field, not a mock-up.</div></div>
+  </div>
+  <div class="card">
+    <h2>Digital Routing — human gatekeeping preserved</h2>
+    <div id="route"><span class="muted" style="padding:10px">Routing activates once a form is generated. Each approval applies a real PAdES digital signature into the form's signature fields (demo PKI standing in for DoD PKI).</span></div>
+  </div>
+  <div class="card">
+    <h2>Signature Vault — full PDF stored on every signature (hash-chained)</h2>
+    <div id="ledger"><table><thead><tr><th>Ver</th><th>Event</th><th>Actor</th><th>UTC</th><th>SHA-256</th><th>Export</th></tr></thead><tbody id="vers"></tbody></table>
+    <span class="lock" id="sigstatus">🔒 Every version is write-once (UPDATE/DELETE abort). Exports keep unsigned signature blocks live — CAC-signable in Adobe/DoD eSign. <a href="/api/ledger/verify" target="_blank">Verify hash chain ↗</a></span></div>
+  </div>
+</div>
+</main>
+<footer>Concept prototype for SBIR demonstration purposes only. Not affiliated with or endorsed by the Department of the Air Force. All member data and AFECD excerpts are fictionalized samples.</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+let CASE=null,saved=0,MEMBERS={};
+
+async function api(path,opts){const r=await fetch(path,opts);if(!r.ok)throw new Error(await r.text());return r.json()}
+
+function renderProfile(){
+ const m=MEMBERS[$("memsel").value];
+ $("profile").innerHTML=Object.entries({Name:m.name,Grade:m.grade,"DoD ID":m.dodid,PAS:m.pas,Unit:m.unit,"Duty Title":m.duty_title,CAFSC:m.cafsc,DAFSC:m.dafsc}).map(([k,v])=>`<div><span>${k}</span><br><b>${v}</b></div>`).join("");
+}
+async function init(){
+ const p=await api("/api/profile");
+ MEMBERS=p.members;
+ $("memsel").innerHTML=Object.values(MEMBERS).map(m=>`<option value="${m.id}">${m.name} (${m.grade}, ${m.cafsc})</option>`).join("");
+ renderProfile();
+ const who=await api("/api/whoami");
+ $("whoami").textContent=`${who.subject} — ${who.method}${who.authenticated?" ✔":""}`;
+ refreshArchive();refreshQueue();refreshMetrics();
+}
+async function refreshMetrics(){
+ const m=await api("/api/metrics");
+ $("saved").textContent=m.man_hours_saved;
+ const s=m.median_cycle_seconds;
+ $("cycle").textContent=s==null?"—":s<120?Math.round(s)+" sec":Math.round(s/60)+" min";
+}
+async function refreshQueue(){
+ const res=await api("/api/cases");
+ $("queue").innerHTML=res.cases.map(c=>`<tr style="cursor:pointer" onclick="loadCase('${c.id}')"><td>${c.ctrl_no}</td><td>${c.label.length>32?c.label.slice(0,32)+"…":c.label}</td><td>${c.status==="finalized"?'<span class="pill">Finalized</span>':c.status==="rejected"?'<span class="pill" style="background:#faeeea;color:#b3542f">Rejected</span>':"Active"}</td><td>${c.pending||"—"}</td></tr>`).join("");
+}
+async function loadCase(id){
+ CASE=await api(`/api/case/${id}`);
+ refreshPreview();drawRoute();refreshLedger();
+}
+function addMsg(t,c){const d=document.createElement("div");d.className="msg "+c;d.textContent=t;$("chat").appendChild(d);$("chat").scrollTop=1e9}
+
+async function ask(preset){
+ const q=preset||$("q").value.trim();if(!q)return;$("q").value="";
+ addMsg(q,"user");
+ const res=await api("/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q,member_id:$("memsel").value})});
+ $("rag").innerHTML=res.retrieved.length?res.retrieved.map(d=>`<div class="ragdoc"><span class="src">📄 ${d.source} · score ${d.score}</span><br>${d.text}</div>`).join(""):'<span class="muted">No passages matched.</span>';
+ addMsg(res.reply,"bot");
+ if(res.case){CASE=res.case;refreshPreview();drawRoute();refreshLedger()}
+}
+async function refreshLedger(){
+ if(!CASE)return;
+ const res=await api(`/api/case/${CASE.id}/versions`);
+ $("vers").innerHTML=res.versions.map(v=>`<tr><td>v${v.version}</td><td>${v.event}</td><td>${v.actor.length>34?v.actor.slice(0,34)+"…":v.actor}</td><td>${v.utc.slice(5,16).replace("T"," ")}Z</td><td style="font-family:monospace">${v.sha256.slice(0,12)}…</td><td><a href="/api/version/${v.id}/pdf" target="_blank">PDF ↗</a></td></tr>`).join("");
+}
+function refreshPreview(){
+ $("ctrlno").textContent="Ctrl #: "+CASE.ctrl;
+ $("pdflink").style.display="inline";$("pdflink").href=`/api/case/${CASE.id}/pdf`;
+ $("packetlink").style.display="inline";$("packetlink").href=`/api/case/${CASE.id}/packet`;
+ $("ingestlbl").style.display=CASE.status==="active"?"inline":"none";
+ $("preview").innerHTML=`<img src="/api/case/${CASE.id}/preview.png?t=${Date.now()}" alt="DAF Form 2096 preview">`;
+}
+async function ingest(input){
+ if(!input.files.length||!CASE)return;
+ const fd=new FormData();fd.append("file",input.files[0]);input.value="";
+ try{
+   const r=await fetch(`/api/case/${CASE.id}/ingest`,{method:"POST",body:fd});
+   const res=await r.json();
+   if(!r.ok){addMsg("⚠ Ingest rejected: "+(res.detail||r.status),"bot");return}
+   CASE=res.case;refreshPreview();drawRoute();refreshLedger();refreshQueue();
+   addMsg("⇪ External signed PDF validated ("+res.signatures.length+" signature(s) intact & trusted) and vaulted as v"+res.vaulted.version+".","bot");
+   if(res.finalized){refreshMetrics();refreshArchive()}
+ }catch(e){addMsg("⚠ Ingest failed: "+e,"bot")}
+}
+function drawRoute(){
+ $("route").innerHTML=CASE.routing.map((r,i)=>`<div class="step ${r.status==="rejected"?"":r.status}" ${r.status==="rejected"?'style="border-color:#b3542f;background:#faeeea"':''}><b>${r.label}</b><span style="font-size:11.5px">${r.name.split(",").slice(0,2).join(",")}</span><div class="st">${r.status==="approved"?"✓ Signed":r.status==="pending"?"Awaiting action":r.status==="rejected"?"✗ Rejected":"Queued"}</div>${r.status==="pending"?`<button onclick="approve('${r.role}')">${r.role==="member"?"Concur & Sign":i===CASE.routing.length-1?"Approve, Flatten & Archive":"Approve & Sign ✓"}</button> <button style="background:#b3542f;padding:5px 8px;font-size:11px;margin-top:4px" onclick="rejectCase('${r.role}')">Reject ✗</button>`:""}</div>`).join('<div class="arrow">→</div>')
+ + (CASE.finalized?'<div class="step approved" style="flex:.7"><b>Archived</b><div class="st">🔒 read-only</div></div>':'');
+}
+async function rejectCase(role){
+ const comment=prompt("Reason for disapproval (recorded in the vault):","Requirements not verified");
+ if(comment===null)return;
+ const res=await api(`/api/case/${CASE.id}/reject`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({role,comment})});
+ CASE=res.case;drawRoute();refreshLedger();refreshQueue();
+ addMsg("✗ Action "+CASE.ctrl+" disapproved at the "+role+" step. The rejection and comment are vaulted — the paper trail includes the 'no'.","bot");
+}
+async function approve(role){
+ const res=await api(`/api/case/${CASE.id}/approve`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({role})});
+ CASE=res.case;refreshPreview();drawRoute();refreshLedger();
+ const sigs=res.signatures||[];
+ const allOk=sigs.length&&sigs.every(s=>s.intact&&s.valid&&s.trusted);
+ $("sigstatus").innerHTML=`🔏 ${sigs.length} digital signature(s): ${allOk?"all INTACT · VALID · TRUSTED (demo CA)":"validation issue!"} — v${res.vaulted.version} vaulted (${res.vaulted.sha256.slice(0,12)}…). <a href="/api/ledger/verify" target="_blank">Verify hash chain ↗</a>`;
+ refreshQueue();
+ if(res.finalized){
+   refreshMetrics();
+   addMsg("✅ Fully approved with "+sigs.length+" digital signatures (all cryptographically valid). Flattened archive copy stored as "+CASE.ctrl+"; every signed version retained in the write-once vault. MilPDS data packet ready for FSS.","bot");
+   refreshArchive();
+ }
+}
+async function refreshArchive(){
+ const res=await api("/api/archive");
+ $("arch").innerHTML=res.records.map(r=>`<tr><td>${r.ctrl_no}</td><td>${r.action}</td><td>${r.finalized_utc.slice(0,16).replace("T"," ")}Z</td><td><a href="/api/archive/${encodeURIComponent(r.ctrl_no)}/pdf" target="_blank">🔒 PDF</a></td></tr>`).join("");
+}
+init();
+</script>
+</body>
+</html>
